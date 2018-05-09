@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Battery Life</title>
+
+    <style>
+        .batery-meter {
+            height: 20px;
+            width: 100px;
+            background: gray;
+            margin: 100px auto;
+        }
+
+        .batery-meter.green {
+            background: green;
+        }
+
+        .batery-meter.orange {
+            background: orange;
+        }
+
+        .batery-meter.red {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="batery-meter"></div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const batteryMeter = document.querySelector('.batery-meter');
+
+            function changeBatteryMeter(battery) {
+                if (battery.level > 0.6) {
+                    batteryMeter.classList.remove('orange', 'red');
+
+                    batteryMeter.classList.add('green');
+                } else if (battery > 0.3) {
+                    batteryMeter.classList.remove('green', 'red');
+
+                    batteryMeter.classList.add('orange');
+                } else {
+                    batteryMeter.classList.remove('green', 'orange');
+
+                    batteryMeter.classList.add('red');
+                }
+            }
+
+            navigator.getBattery().then(battery => {
+                changeBatteryMeter(battery);
+
+                battery.onlevelchange = () => changeBatteryMeter(battery);
+            });
+        })();
+    </script>
+</body>
+</html>

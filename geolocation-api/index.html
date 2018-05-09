@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geolocation API</title>
+</head>
+<body>
+    <button class="get-location">Get My Location</button>
+    <pre class="result">
+
+    </pre>
+
+
+<script>
+    (function () {
+        'use strict';
+
+        const button = document.querySelector('.get-location');
+        const result = document.querySelector('.result');
+
+        button.addEventListener('click', () => {
+            result.innerHTML = 'Loading...';
+
+            navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+                const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCbJLM1OImYUrQTXereMjIPeX3RxPn-5C0`;
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then(body => result.innerHTML = JSON.stringify(body.results[0], null, 4));
+            }, err => {
+                result.innerHTML = `Error: ${err.message}`;
+            });
+        });
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workers</title>
+</head>
+<body>
+    <div>
+        <label for="value1">Value 1</label>
+        <input type="number" id="value1">
+    </div>
+    <div>
+        <label for="value2">Value 2</label>
+        <input type="number" id="value2">
+    </div>
+    <div>
+        <span>Operations: </span>
+        <button id="subtract">-</button>
+        <button id="add">+</button>
+        <button id="divide">/</button>
+        <button id="multiply">*</button>
+    </div>
+    <div>
+        <label for="result">Result</label>
+        <input type="number" id="result" readonly>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const calculator = new Worker('calculatorWorker.js');
+            const getValue1 = () => document.getElementById('value1').value;
+            const getValue2 = () => document.getElementById('value2').value;
+            const setResult = result => document.getElementById('result').value = result;
+
+            document.getElementById('subtract').addEventListener('click', () => {
+                calculator.postMessage({ value1: getValue1(), value2: getValue2(), operation: '-' });
+            });
+
+            document.getElementById('add').addEventListener('click', () => {
+                calculator.postMessage({ value1: getValue1(), value2: getValue2(), operation: '+' });
+            });
+
+            document.getElementById('divide').addEventListener('click', () => {
+                calculator.postMessage({ value1: getValue1(), value2: getValue2(), operation: '/' });
+            });
+
+            document.getElementById('multiply').addEventListener('click', () => {
+                calculator.postMessage({ value1: getValue1(), value2: getValue2(), operation: '*' });
+            });
+
+            calculator.addEventListener('message', evt => {
+                setResult(evt.data.result);
+            });
+        })();
+    </script>
+</body>
+</html>

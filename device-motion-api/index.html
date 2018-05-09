@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Device Motion API</title>
+</head>
+<body>
+<button class="vibrate-button">Vibrate</button>
+
+<script>
+    (function () {
+        'use strict';
+
+
+
+        window.addEventListener('deviceorientation', evt => {
+            console.log(evt);
+        });
+
+        window.addEventListener('devicemotion', evt => {
+            console.log(evt);
+        });
+    })();
+</script>
+</body>
+</html>

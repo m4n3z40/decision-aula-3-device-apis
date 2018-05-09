@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notification API</title>
+</head>
+<body>
+    <button class="notify-button">Notify</button>
+
+    <script>
+        (function() {
+            'use strict';
+
+            function showNotification() {
+                Notification.requestPermission().then(() => {
+                    const notification = new Notification('This is a notification!');
+                });
+            }
+
+            const notifyButton = document.querySelector('.notify-button');
+
+            notifyButton.addEventListener('click', showNotification);
+        })();
+    </script>
+</body>
+</html>

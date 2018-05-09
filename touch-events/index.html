@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">
+    <title>Touch Events</title>
+    <style>
+        .container {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #ddd;
+            border: 1px solid red;
+            left: calc(50% - 25px);
+            top: calc(50% - 25px);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+    <script>
+        const container = document.querySelector('.container');
+
+        container.addEventListener('touchstart', e => {
+           console.log('Started Moving!');
+        });
+
+        container.addEventListener('touchmove', e => {
+            if (e.touches.length > 1) {
+                // TODO
+            } else {
+                container.style.top = `${e.touches[0].clientY - (container.clientHeight / 2)}px`;
+                container.style.left = `${e.touches[0].clientX - (container.clientWidth / 2)}px`;
+            }
+        });
+
+        container.addEventListener('touchstart', e => {
+            console.log('Ended Moving!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vibration API</title>
+</head>
+<body>
+<button class="vibrate-button">Vibrate</button>
+
+<script>
+    (function() {
+        'use strict';
+
+        function vibrate() {
+            navigator.vibrate([1000, 1000, 3000, 4000, 1000]);
+        }
+
+        const vibrateButton = document.querySelector('.vibrate-button');
+
+        vibrateButton.addEventListener('click', vibrate);
+    })();
+</script>
+</body>
+</html>

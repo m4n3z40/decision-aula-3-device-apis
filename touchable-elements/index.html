@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Touchable Elements</title>
+
+    <style>
+        .fake-button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="fake-button">Clique Aqui</div>
+
+    <script>
+        (function() {
+            'use script';
+
+            document.querySelector('.fake-button').addEventListener('click', () => {
+                alert('Clicado!');
+            });
+        })();
+    </script>
+</body>
+</html>

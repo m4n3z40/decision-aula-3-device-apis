@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>User Media</title>
+
+    <style>
+        #video {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay controls="true"></video>
+
+    <script>
+        (function () {
+            'use strict';
+
+            const video = document.getElementById('video');
+
+            navigator.getUserMedia({ audio: false, video: true }, stream => {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            }, error => {
+                alert(error.message);
+            });
+        })();
+    </script>
+</body>
+</html>

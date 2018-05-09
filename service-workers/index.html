@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Worker</title>
+</head>
+<body>
+    <button data-href="https://www.google.com">Fetch google</button>
+    <button data-href="https://www.duckduckgo.com">Fetch duckduckgo</button>
+    <button data-href="https://www.yahoo.com">Fetch yahoo</button>
+
+    <script>
+        (function() {
+            'use strict';
+
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log(registration);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            const buttons = Array.from(document.querySelectorAll('button'));
+
+            buttons.forEach(button => button.addEventListener('click', () => {
+                fetch(button.dataset.href, { mode: 'no-cors' })
+                    .then(res=> console.log(res));
+            }));
+        })();
+    </script>
+</body>
+</html>

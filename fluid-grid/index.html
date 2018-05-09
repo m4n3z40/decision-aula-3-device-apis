@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fluid Grid</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .row {
+            overflow: hidden;
+        }
+
+        .row:after {
+            content: '';
+            display: table;
+            zoom: 1;
+            clear: both;
+        }
+
+        .row > [class^="column"] {
+            float: left;
+        }
+
+        .column-small {
+            width: 33.33%;
+        }
+
+        .column-small:not(:last-child) {
+            width: calc(33.33% - 30px);
+        }
+
+        .column-medium {
+            width: 50%;
+        }
+
+        .column-medium:not(:last-child) {
+            width: calc(50% - 30px);
+        }
+
+        .column-big {
+            width: 100%;
+        }
+
+        .column-big:not(:last-child) {
+            width: calc(100% - 30px);
+        }
+
+        @media (max-width: 480px) {
+            .column-small,
+            .column-small:not(:last-child),
+            .column-medium,
+            .column-medium:not(:last-child),
+            .column-big,
+            .column-big:not(:last-child) {
+                width: 100%;
+            }
+        }
+
+        [class^="column"] {
+            padding: 20px;
+            background: #ccc;
+            color: blueviolet;
+            border: 1px solid red;
+        }
+
+        [class^="column"]:not(:last-child) {
+            margin-right: 30px;
+        }
+    </style>
+
+    <style>
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        @media (max-width: 480px) {
+            .flex-row {
+                flex-direction: column;
+            }
+        }
+
+        .row > [class^="column"] {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="column-big">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate delectus dolor ex laboriosam minus porro quasi quo vero? Aliquam atque beatae consectetur, ducimus eveniet hic nostrum porro veniam vero!
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam architecto at corporis culpa eaque eveniet explicabo maxime molestiae mollitia nisi optio quae rem repellendus sunt, totam vel voluptate voluptatibus.</div>
+            <div class="column-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid corporis, cumque delectus ea eaque, fugit incidunt magnam maxime nostrum quas ratione recusandae sequi similique totam. Beatae placeat soluta vitae.</div>
+        </div>
+
+        <div class="row">
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium beatae blanditiis consectetur corporis delectus dolorem ex, explicabo impedit libero maiores molestiae, nihil officiis quas qui quo rem sapiente vero!</div>
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias consectetur excepturi in, iste itaque maiores nam, neque non officiis sapiente vitae. Aut facilis nam sapiente vel veritatis. Alias, nobis.</div>
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto asperiores autem dicta magni necessitatibus optio saepe sapiente veniam vitae voluptatum. Dignissimos molestias quos rem tenetur? Iure minima quod tempore velit.</div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <div>
+        <div class="flex-row">
+            <div class="column-big">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate delectus dolor ex laboriosam minus porro quasi quo vero? Aliquam atque beatae consectetur, ducimus eveniet hic nostrum porro veniam vero!
+            </div>
+        </div>
+
+        <div class="flex-row">
+            <div class="column-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam architecto at corporis culpa eaque eveniet explicabo maxime molestiae mollitia nisi optio quae rem repellendus sunt, totam vel voluptate voluptatibus.</div>
+            <div class="column-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid corporis, cumque delectus ea eaque, fugit incidunt magnam maxime nostrum quas ratione recusandae sequi similique totam. Beatae placeat soluta vitae.</div>
+        </div>
+
+        <div class="flex-row">
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium beatae blanditiis consectetur corporis delectus dolorem ex, explicabo impedit libero maiores molestiae, nihil officiis quas qui quo rem sapiente vero!</div>
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias consectetur excepturi in, iste itaque maiores nam, neque non officiis sapiente vitae. Aut facilis nam sapiente vel veritatis. Alias, nobis.</div>
+            <div class="column-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto asperiores autem dicta magni necessitatibus optio saepe sapiente veniam vitae voluptatum. Dignissimos molestias quos rem tenetur? Iure minima quod tempore velit.</div>
+        </div>
+    </div>
+</body>
+</html>

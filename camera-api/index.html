@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>"Camera API"</title>
+</head>
+<body>
+    <input class="imageInput" type="file" accept="image/*">
+    <br>
+    <img class="pictureTaken" src="#">
+
+<script>
+    (function () {
+        'use strict';
+
+        const imageInput = document.querySelector('.imageInput');
+        const pictureTaken = document.querySelector('.pictureTaken');
+
+        imageInput.addEventListener('change', evt => {
+            const file = evt.target.files[0];
+
+            pictureTaken.src = URL.createObjectURL(file);
+        });
+    })();
+</script>
+</body>
+</html>

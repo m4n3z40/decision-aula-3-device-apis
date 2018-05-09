@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Html 5 - Inputs</title>
+</head>
+<body>
+    <form action="">
+        <div class="form-control">
+            <label for="colorInput">Cor</label>
+            <input id="colorInput" type="color" name="color">
+        </div>
+        <div class="form-control">
+            <label for="dateInput">Data</label>
+            <input id="dateInput" type="date" name="date">
+        </div>
+        <div class="form-control">
+            <label for="timeInput">Hora</label>
+            <input id="timeInput" type="time" name="time">
+        </div>
+        <div class="form-control">
+            <label for="dateTimeInput">Data e Hora</label>
+            <input id="dateTimeInput" type="datetime-local" name="datetime">
+        </div>
+        <div class="form-control">
+            <label for="weekInput">Semana</label>
+            <input id="weekInput" type="week" name="week">
+        </div>
+        <div class="form-control">
+            <label for="monthInput">Mês</label>
+            <input id="monthInput" type="month" name="month">
+        </div>
+        <div class="form-control">
+            <label for="numberInput">Número</label>
+            <input id="numberInput" type="number" name="number" pattern="^([\d]{3-6})$" min="10" max="999999" required>
+        </div>
+        <div class="form-control">
+            <label for="rangeInput">Range</label>
+            <input id="rangeInput" type="range" name="range">
+        </div>
+        <div class="form-control tel-input-control">
+            <label for="telInput">Telefone</label>
+            <input id="telInput" type="tel" name="tel" placeholder="Telefone">
+        </div>
+        <div class="form-control">
+            <label for="emailInput">Email</label>
+            <input id="emailInput" type="email" name="email">
+        </div>
+        <div class="form-control">
+            <label for="urlInput">URL</label>
+            <input id="urlInput" type="url" name="url">
+        </div>
+        <div class="form-control">
+            <label for="searchInput">Busca</label>
+            <input id="searchInput" type="search" name="search">
+        </div>
+        <div class="form-control">
+            <label for="selectInput">Select</label>
+            <select name="select" id="selectInput">
+                <option value="1" name="value1">Value 1</option>
+                <option value="2" name="value2">Value 2</option>
+                <option value="3" name="value3">Value 3</option>
+                <option value="4" name="value1">Value 4</option>
+                <option value="5" name="value1">Value 5</option>
+            </select>
+        </div>
+
+        <div class="actions">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script src="main.js"></script>
+</body>
+</html>
